@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ListViewController.h"
 
 @interface ViewController ()
 
@@ -35,21 +36,20 @@
 {
     [self.view endEditing:YES];
 }
-- (IBAction)onLoginPressed:(id)sender {
-    
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ListViewController *listViewController = (ListViewController *)segue.destinationViewController;
+    [listViewController view];
+    listViewController.lblTitle.text = self.username;
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
     BOOL isUserEqual = [self.username isEqualToString:[self.usernameTextView text]];
     BOOL isPasswordEqual = [self.password isEqualToString:[self.passwordTextView text]];
     
-    if (isUserEqual && isPasswordEqual)
-    {
-        NSLog(@"SUCCESS!");
-        [self.notificationLabel setText:@"Congratulations you have logged in!"];
-    }
-    else
-    {
-        NSLog(@"FAILURE!");
-        [self.notificationLabel setText:@"Your username or password was incorrect."];
-    }
+    return isUserEqual && isPasswordEqual;
 }
 @end
 
