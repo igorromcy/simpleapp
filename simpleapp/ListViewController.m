@@ -13,6 +13,12 @@
 
 @interface ListViewController ()
 
+@property (nonatomic, strong) NSURLSessionConfiguration *configuration;
+@property (nonatomic, strong) AFURLSessionManager *manager;
+@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) NSURLRequest *request;
+@property (nonatomic, strong) NSURLSessionDataTask *dataTask;
+
 @end
 
 @implementation ListViewController
@@ -20,24 +26,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    [self setupChuckNorrisApi];
+    [self requestChuckNorrisApi];
+}
+
+- (IBAction)btnRequestLegendClick:(id)sender {
+    [self requestChuckNorrisApi];
+}
+
+- (void)setupChuckNorrisApi {
+    self.configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:self.configuration];
     
-    NSURL *URL = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/random"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    self.URL = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/random"];
+    self.request = [NSURLRequest requestWithURL:self.URL];
+}
+
+- (void)requestChuckNorrisApi {
+    self.dataTask = [self.manager dataTaskWithRequest:self.request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
             ChuckNorrisResponse *chuckNorris = [ChuckNorrisResponse alloc];
             [chuckNorris parseResponse:responseObject];
-            NSLog(@"%@ %@", response, chuckNorris);
+            self.lblChuckNorrisSaying.text = chuckNorris.value;
         }
     }];
     
-    [dataTask resume];
-
+    [self.dataTask resume];
 }
-    
+
 @end

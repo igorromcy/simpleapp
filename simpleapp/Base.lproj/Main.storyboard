@@ -19,31 +19,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmZ-fi-GNY">
-                                <rect key="frame" x="109" y="28" width="43" height="21"/>
+                                <rect key="frame" x="120.5" y="29.5" width="48.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="I7u-jU-TeM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hF-NN-Eb5">
-                                <rect key="frame" x="22" y="28" width="85" height="21"/>
+                                <rect key="frame" x="22" y="28" width="96.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuck Norris saying:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIk-LS-3ON">
+                                <rect key="frame" x="22" y="60" width="189.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading saying..." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpU-cY-7W1">
+                                <rect key="frame" x="22" y="92" width="331" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wx-LK-yl3">
+                                <rect key="frame" x="95.5" y="328.5" width="184" height="30"/>
+                                <state key="normal" title="Get another legend phrase"/>
+                                <connections>
+                                    <action selector="btnRequestLegendClick:" destination="TkK-vh-VaM" eventType="touchUpInside" id="kTY-yx-lgb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3hF-NN-Eb5" firstAttribute="leading" secondItem="gE4-UK-a3F" secondAttribute="leading" constant="22" id="1Wi-6t-BHo"/>
+                            <constraint firstItem="fmZ-fi-GNY" firstAttribute="centerY" secondItem="3hF-NN-Eb5" secondAttribute="centerY" id="2Id-uH-nMr"/>
                             <constraint firstItem="fmZ-fi-GNY" firstAttribute="leading" secondItem="3hF-NN-Eb5" secondAttribute="trailing" constant="2" id="6nr-d2-VBD"/>
+                            <constraint firstItem="7wx-LK-yl3" firstAttribute="centerY" secondItem="gE4-UK-a3F" secondAttribute="centerY" id="ZTQ-Wc-Sn7"/>
+                            <constraint firstItem="UpU-cY-7W1" firstAttribute="leading" secondItem="nIk-LS-3ON" secondAttribute="leading" id="at2-f5-Iyt"/>
+                            <constraint firstItem="nIk-LS-3ON" firstAttribute="top" secondItem="3hF-NN-Eb5" secondAttribute="bottom" constant="8" id="ezz-Tw-99I"/>
                             <constraint firstItem="3hF-NN-Eb5" firstAttribute="top" secondItem="gE4-UK-a3F" secondAttribute="top" constant="8" id="fJa-kW-pe6"/>
-                            <constraint firstItem="fmZ-fi-GNY" firstAttribute="top" secondItem="3hF-NN-Eb5" secondAttribute="top" id="sO3-mN-HVL"/>
+                            <constraint firstItem="gE4-UK-a3F" firstAttribute="trailing" secondItem="UpU-cY-7W1" secondAttribute="trailing" constant="22" id="h1N-kr-Ey5"/>
+                            <constraint firstItem="7wx-LK-yl3" firstAttribute="centerX" secondItem="gE4-UK-a3F" secondAttribute="centerX" id="hbM-s4-vEy"/>
+                            <constraint firstItem="nIk-LS-3ON" firstAttribute="leading" secondItem="3hF-NN-Eb5" secondAttribute="leading" id="nRf-7R-ycf"/>
+                            <constraint firstItem="UpU-cY-7W1" firstAttribute="top" secondItem="nIk-LS-3ON" secondAttribute="bottom" constant="8" id="oj7-39-ZPh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gE4-UK-a3F"/>
                     </view>
                     <connections>
+                        <outlet property="btnRequestLegend" destination="7wx-LK-yl3" id="fOf-9g-b8s"/>
+                        <outlet property="lblChuckNorrisSaying" destination="UpU-cY-7W1" id="frF-Cb-NzY"/>
                         <outlet property="lblTitle" destination="fmZ-fi-GNY" id="0G5-RO-hsh"/>
                     </connections>
                 </viewController>

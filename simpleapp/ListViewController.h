@@ -10,6 +10,8 @@
 
 @interface ListViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblChuckNorrisSaying;
+@property (weak, nonatomic) IBOutlet UIButton *btnRequestLegend;
 
 @end
 
