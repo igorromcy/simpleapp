@@ -6,6 +6,7 @@ target 'simpleapp' do
   # use_frameworks!
 
   # Pods for simpleapp
+  pod 'AFNetworking', '~> 3.0'
 
   target 'simpleappTests' do
     inherit! :search_paths
